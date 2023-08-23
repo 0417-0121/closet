@@ -31,4 +31,8 @@ Route::middleware('auth')->group(function () {
 
 Route::get('/coordinates', [CoordinateController::class, 'index']); 
 
+Route::get('/', function() {
+    return view('coordinates.index');
+});
+
 require __DIR__.'/auth.php';
