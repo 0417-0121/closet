@@ -15,8 +15,8 @@ return new class extends Migration
     {
         Schema::create('coordinates', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained();
-            $table->foreignId('show_id')->constrained();
+            $table->foreignId('user_id')->constrained('users');
+            // $table->foreignId('show_id')->constrained('shows');
             $table->string('wear_cloth', 50);
             $table->timestamps();
             $table->softDeletes();

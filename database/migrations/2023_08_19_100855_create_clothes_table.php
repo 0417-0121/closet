@@ -15,10 +15,10 @@ return new class extends Migration
     {
         Schema::create('clothes', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained();
-            $table->foreignId('temp_id')->constrained();
-            $table->foreignId('color_id')->constrained();
-            $table->foreignId('category_id')->constrained();
+            $table->foreignId('user_id')->constrained('users');
+            $table->foreignId('temp_id')->constrained('temps');
+            $table->foreignId('color_id')->constrained('colors');
+            $table->foreignId('category_id')->constrained('categories');
             $table->string('comment', 200);
             $table->timestamps();
             $table->softDeletes();

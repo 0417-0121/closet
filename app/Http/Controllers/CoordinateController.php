@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Cooridinate;
+use App\Models\Coordinate;
 
 class CoordinateController extends Controller
 {
