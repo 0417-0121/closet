@@ -11,9 +11,12 @@
         <div class='coordinates'>
             @foreach ($coordinates as $coordinate)
                 <div class='coordinate'>
-                    <p class='coordinate_name'>{{ $coordinate->wear_cloth}}</p><br>
+                    <a href="/coordinates/{{ $coordinate->id }}"><p class='coordinate_name'>{{ $coordinate->wear_cloth}}</p></a>
                 </div>
             @endforeach
+        </div>
+        <div class='paginate'>
+            {{ $coordinates->links() }}
         </div>
     </body>
 </html>
