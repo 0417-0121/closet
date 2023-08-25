@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CoordinateController;
+use App\Http\Controllers\ClothController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,11 +15,6 @@ use App\Http\Controllers\CoordinateController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
-
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
@@ -29,10 +25,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::get('/coordinates', [CoordinateController::class, 'index']); 
-
-Route::get('/', function() {
-    return view('coordinates.index');
-});
-
 require __DIR__.'/auth.php';
+
+Route::get('/', [CoordinateController::class, 'index']); 
+Route::get('/clothes', [ClothController::class, 'index']); 
