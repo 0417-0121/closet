@@ -11,7 +11,7 @@
         <div class='coordinates'>
             @foreach ($coordinates as $coordinate)
                 <div class='coordinate'>
-                    <p class='clothes_name'>{{ $coordinate->clothes_name }}</p><br>
+                    <p class='coordinate_name'>{{ $coordinate->wear_cloth}}</p><br>
                 </div>
             @endforeach
         </div>
