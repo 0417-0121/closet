@@ -2,12 +2,8 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
-<<<<<<< HEAD
-use App\Http\Controllers\CoordinateController; //外部にあるCooridinateControllerクラスをインポート
-=======
 use App\Http\Controllers\CoordinateController;
 use App\Http\Controllers\ClothController;
->>>>>>> clothes_table
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -31,9 +27,5 @@ Route::middleware('auth')->group(function () {
 
 require __DIR__.'/auth.php';
 
-<<<<<<< HEAD
-Route::get('/', [CoordinateController::class, 'index']);
-=======
 Route::get('/', [CoordinateController::class, 'index']); 
 Route::get('/clothes', [ClothController::class, 'index']); 
->>>>>>> clothes_table
