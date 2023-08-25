@@ -8,6 +8,7 @@
     </head>
     <body>
         <h1>保存したコーデ一覧</h1>
+        <a href='/coordinates/create'>服を選ぶ</a>
         <div class='coordinates'>
             @foreach ($coordinates as $coordinate)
                 <div class='coordinate'>
