@@ -16,5 +16,10 @@ class CoordinateController extends Controller
     {
         return view('coordinates.show')->with(['coordinate' => $coordinate]);
     }
+    
+        public function create()
+    {
+        return view('coordinates.create');
+    }
 }
 ?>　　　
