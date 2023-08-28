@@ -11,7 +11,7 @@
             @csrf
             <div class="wear_cloth">
                 <h2>Name</h2>
-                <input type="text" name="coordinate[title]" placeholder="コーディネート名"/><br><br>
+                <input type="text" name="coordinate[wear_cloth]" placeholder="コーディネート名"/><br><br>
             </div>
             <input type="submit" value="保存"/>
         </form>
