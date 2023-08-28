@@ -21,5 +21,12 @@ class CoordinateController extends Controller
     {
         return view('coordinates.create');
     }
+    
+        public function store(Request $request, Coordinate $coordinate)
+    {
+        $input = $request['coordinate'];
+        $coordinate->fill($input)->save();
+        return redirect('/coordinates/' . $coordinate->id);
+    }
 }
 ?>　　　
