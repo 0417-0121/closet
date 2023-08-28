@@ -30,4 +30,5 @@ require __DIR__.'/auth.php';
 Route::get('/', [CoordinateController::class, 'index']); 
 Route::get('/coordinates/create', [CoordinateController::class, 'create']);
 Route::get('/coordinates/{coordinate}', [CoordinateController::class ,'show']);
+Route::post('/coordinates', [CoordinateController::class, 'store']);
 Route::get('/clothes', [ClothController::class, 'index']); 
