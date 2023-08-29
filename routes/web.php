@@ -28,4 +28,4 @@ Route::middleware('auth')->group(function () {
 require __DIR__.'/auth.php';
 
 Route::get('/', [CoordinateController::class, 'index']); 
-Route::get('/clothes', [ClothController::class, 'index']); 
+Route::get('/', [ClothController::class, 'index']);
