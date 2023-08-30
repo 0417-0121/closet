@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained();
             $table->foreignId('show_id')->constrained();
-            $table->string('image');
+            $table->string('image_url');
         });
     }
 
