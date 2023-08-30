@@ -27,8 +27,14 @@ Route::middleware('auth')->group(function () {
 
 require __DIR__.'/auth.php';
 
-Route::get('/', [CoordinateController::class, 'index']); 
-Route::get('/coordinates/create', [CoordinateController::class, 'create']);
-Route::get('/coordinates/{coordinate}', [CoordinateController::class ,'show']);
-Route::post('/coordinates', [CoordinateController::class, 'store']);
-Route::get('/', [ClothController::class, 'index']);
+Route::controller(CoordinateController::class)->middleware(['auth'])->group(function(){
+    Route::get('/', 'index')->name('index');
+    Route::get('/coordinates/create', [CoordinateController::class, 'create']);
+    Route::get('/coordinates/{coordinate}', [CoordinateController::class ,'show']);
+    Route::post('/coordinates', [CoordinateController::class, 'store']);
+    Route::get('/coordinates/{coordinate}/edit', [CoordinateController::class, 'edit']);
+    Route::put('/coordinates/{coordinate}', [CoordinateController::class, 'update']);
+    Route::delete('/coordinates/{coordinate}', [CoordinateController::class,'delete']);
+    });
+
+Route::get('/clothes', [ClothController::class, 'index']);

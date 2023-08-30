@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Coordinate;
+use App\Http\Requests\CoordinateRequest;
+use Auth;
 
 class CoordinateController extends Controller
 {
@@ -22,11 +24,46 @@ class CoordinateController extends Controller
         return view('coordinates.create');
     }
     
-        public function store(Request $request, Coordinate $coordinate)
+    public function store(CoordinateRequest $request, Coordinate $coordinate)
     {
         $input = $request['coordinate'];
+        // coordinate配列にuser_idを追加
+        $input['user_id'] = Auth::id();
         $coordinate->fill($input)->save();
+        
         return redirect('/coordinates/' . $coordinate->id);
+    }
+    
+        public function edit(Coordinate $coordinate)
+    {
+        return view('coordinates.edit')->with(['coordinate' => $coordinate]);
+    }
+    
+        public function update(Request $request, Coordinate $coordinate)
+    {
+        $input_coordinate = $request['coordinate'];
+        $coordinate->fill($input_coordinate)->save();
+        
+        return redirect('/coordinates/' . $coordinate->id);
+    }
+    
+        public function delete(Coordinate $coordinate)
+    {
+            $coordinate->delete();
+            return redirect('/');
+    }
+        
+        public function __construct()
+    {
+        $this->middleware('auth'); // ログインしていない場合はログインページにリダイレクトする
+        
+    }
+         public function showUser()
+    {  
+        // ログインしているユーザーのidを取得
+        $user_id = Auth::id();
+        // ユーザーのidをビューに渡す
+        return view('user', ['user_id' => $user_id]);
     }
 }
 ?>　　　

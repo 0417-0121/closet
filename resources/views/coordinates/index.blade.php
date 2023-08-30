@@ -8,6 +8,7 @@
     </head>
     <body>
         <h1>保存したコーデ一覧</h1>
+        {{ Auth::user()->name }}<br>
         <a href='/coordinates/create'>服を選ぶ</a>
         <div class='coordinates'>
             @foreach ($coordinates as $coordinate)
@@ -18,6 +19,9 @@
         </div>
         <div class='paginate'>
             {{ $coordinates->links() }}
+        </div>
+        <div class="footer">
+            <a href="/dashboard">[戻る]</a>
         </div>
     </body>
 </html>

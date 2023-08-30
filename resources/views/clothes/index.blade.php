@@ -18,5 +18,8 @@
                 </div>
             @endforeach
         </div>
+        <div class='paginate'>
+            {{ $clothes->links() }}
+        </div>
     </body>
 </html>
