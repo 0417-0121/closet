@@ -20,6 +20,9 @@
                 <a href="/coordinates/{{ $coordinate->id }}/edit">コーディネート名を変える</a><br><br>
             </div>
         </div>
+        <div>
+                <img src="{{ $coordinate->image_url }}" alt="画像が読み込めません。"/>
+        </div>
          <form action="/coordinates/{{ $coordinate->id }}" id="form_{{ $coordinate->id }}" method="post">
                     @csrf
                     @method('DELETE')
