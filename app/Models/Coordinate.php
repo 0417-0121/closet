@@ -4,13 +4,15 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Coordinate extends Model
 {
     use HasFactory;
+    use SoftDeletes;
     
         protected $fillable = [
-            'wear_cloth',
+            'user_id','wear_cloth',
         ];
     
         public function getPaginateByLimit(int $limit_count = 10)
@@ -18,4 +20,5 @@ class Coordinate extends Model
         // updated_atで降順に並べたあと、limitで件数制限をかける
         return $this->orderBy('updated_at', 'DESC')->paginate($limit_count);
     }
+    
 }

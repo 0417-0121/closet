@@ -11,7 +11,8 @@
             @csrf
             <div class="wear_cloth">
                 <h2>Name</h2>
-                <input type="text" name="coordinate[wear_cloth]" placeholder="コーディネート名"/><br><br>
+                <input type="text" name="coordinate[wear_cloth]" placeholder="コーディネート名"/>
+                <p class="body__error" style="color:red">{{ $errors->first('wear_cloth') }}</p><br>
             </div>
             <input type="submit" value="保存"/>
         </form>
