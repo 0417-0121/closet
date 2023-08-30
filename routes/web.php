@@ -29,9 +29,9 @@ require __DIR__.'/auth.php';
 
 Route::controller(CoordinateController::class)->middleware(['auth'])->group(function(){
     Route::get('/', 'index')->name('index');
-    Route::get('/coordinates/create', [CoordinateController::class, 'create']);
-    Route::get('/coordinates/{coordinate}', [CoordinateController::class ,'show']);
-    Route::post('/coordinates', [CoordinateController::class, 'store']);
+    Route::get('/coordinates/create', [CoordinateController::class, 'create']);  //投稿フォームの表示
+    Route::post('/coordinates', [CoordinateController::class, 'store']);  //画像を含めた投稿の保存処理
+    Route::get('/coordinates/{coordinate}', [CoordinateController::class ,'show']); //投稿詳細画面の表示
     Route::get('/coordinates/{coordinate}/edit', [CoordinateController::class, 'edit']);
     Route::put('/coordinates/{coordinate}', [CoordinateController::class, 'update']);
     Route::delete('/coordinates/{coordinate}', [CoordinateController::class,'delete']);

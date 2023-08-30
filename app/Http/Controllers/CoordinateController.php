@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Coordinate;
 use App\Http\Requests\CoordinateRequest;
 use Auth;
+use Cloudinary;
 
 class CoordinateController extends Controller
 {
@@ -25,8 +26,11 @@ class CoordinateController extends Controller
     }
     
     public function store(CoordinateRequest $request, Coordinate $coordinate)
-    {
+    {   
         $input = $request['coordinate'];
+        //cloudinaryへ画像を送信し、画像のURLを$image_urlに代入している
+        $image_url = Cloudinary::upload($request->file('image')->getRealPath())->getSecurePath();
+        $input += ['image_url' => $image_url];
         // coordinate配列にuser_idを追加
         $input['user_id'] = Auth::id();
         $coordinate->fill($input)->save();
