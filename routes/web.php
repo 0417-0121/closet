@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CoordinateController;
 use App\Http\Controllers\ClothController;
+use App\Http\Controllers\CategoryController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -38,3 +39,8 @@ Route::controller(CoordinateController::class)->middleware(['auth'])->group(func
     });
 
 Route::get('/clothes', [ClothController::class, 'index']);
+Route::get('/clothes/create', [ClothController::class, 'create']);
+Route::get('/clothes/{cloth}', [ClothController::class, 'show']);
+Route::post('/clothes', [ClothController::class, 'store']);
+
+Route::get('/categories', [CategoryController::class, 'index']); 

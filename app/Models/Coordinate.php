@@ -12,7 +12,9 @@ class Coordinate extends Model
     use SoftDeletes;
     
         protected $fillable = [
-            'user_id','wear_cloth','image_url',
+            'user_id',
+            'wear_cloth',
+            'image_url'
         ];
     
         public function getPaginateByLimit(int $limit_count = 10)
