@@ -5,9 +5,18 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+
 class Cloth extends Model
 {
       protected $table = 'clothes';
+      
+      protected $fillable = [
+            'user_id',
+            'temp_id',
+            'category_id',
+            'color_id',
+            'comment'
+        ];
       
      public function getPaginateByLimit(int $limit_count = 10)
     {
