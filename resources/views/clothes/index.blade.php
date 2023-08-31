@@ -7,14 +7,14 @@
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
     </head>
     <body>
-        <h1>登録した服一覧</h1>
+        <h1>保存した服一覧</h1>
+        <a href='/clothes/create'>服の保存</a>
         <div class='clothes'>
             @foreach ($clothes as $cloth)
                 <div class='cloth'>
-                    <h2 class='category'>{{ $cloth->category_id }}</h2>
-                    <p class='temperture'>{{ $cloth->temp_id }}</p>
-                    <p class='color'>{{ $cloth->color_id }}</p>
-                    <p class='comment'>{{ $cloth->comment }}</p>
+                    <h2 class='title'>
+                        <a href="/clothes/{{ $cloth->id }}">{{ $cloth->category_id }}</a>
+                    </h2>
                 </div>
             @endforeach
         </div>
@@ -23,3 +23,4 @@
         </div>
     </body>
 </html>
+
