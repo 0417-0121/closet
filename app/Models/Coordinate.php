@@ -14,7 +14,7 @@ class Coordinate extends Model
         protected $fillable = [
             'user_id',
             'wear_cloth',
-            'image_url'
+            'img_url'
         ];
     
         public function getPaginateByLimit(int $limit_count = 10)

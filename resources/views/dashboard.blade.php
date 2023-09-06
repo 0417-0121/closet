@@ -14,4 +14,7 @@
             </div>
         </div>
     </div>
+        <a href='/clothes/create'>服の保存</a><br>
+        <a href='/coordinates/create'>着る服を選ぶ</a>
 </x-app-layout>
+        

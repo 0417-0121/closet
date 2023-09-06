@@ -5,6 +5,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CoordinateController;
 use App\Http\Controllers\ClothController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ColorController;
+use App\Http\Controllers\TemperatureController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -37,10 +39,15 @@ Route::controller(CoordinateController::class)->middleware(['auth'])->group(func
     Route::put('/coordinates/{coordinate}', [CoordinateController::class, 'update']);
     Route::delete('/coordinates/{coordinate}', [CoordinateController::class,'delete']);
     });
-
-Route::get('/clothes', [ClothController::class, 'index']);
+Route::get('/clothes', [ClothController::class, 'index'])->name('index');
 Route::get('/clothes/create', [ClothController::class, 'create']);
-Route::get('/clothes/{cloth}', [ClothController::class, 'show']);
 Route::post('/clothes', [ClothController::class, 'store']);
+Route::get('/clothes/{cloth}', [ClothController::class, 'show']);
+Route::get('/clothes/{cloth}/edit', [ClothController::class, 'edit']);
+Route::put('/clothes/{cloth}', [ClothController::class, 'update']);
 
-Route::get('/categories', [CategoryController::class, 'index']); 
+// Route::get('/categories', [CategoryController::class, 'index']); 
+
+// Route::get('/colors', [ColorController::class, 'index']);
+
+// Route::get('/temps', [TempController::class, 'index']); 
