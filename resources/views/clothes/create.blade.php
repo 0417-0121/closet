@@ -12,28 +12,42 @@
             @csrf
             <div class="temperture">
                 <h2>気温</h2>
-                <input type="number" name="cloth[temp_id]" placeholder="気温を入力"/>
-                <a href="/clothes">＞</a>
+                <select name="cloth[temperature_id]">
+                    @foreach($temperatures as $temperature)
+                    <option value="{{$temperature->id}}">{{$temperature->temperature}}</option>
+                    @endforeach
+                </select>
             </div>
             <div class="category">
                 <h2>カテゴリー</h2>
-                <input type="text" name="cloth[category_id]" placeholder="カテゴリーを入力"/>
-                <a href="/clothes">＞</a>
+                <select name="cloth[category_id]">
+                    @foreach($categories as $category)
+                    <option value="{{$category->id}}">{{$category->cloth_name}}</option>
+                    @endforeach
+                </select>
             </div>
             <div class="color">
                 <h2>色</h2>
-                <input type="text" name="cloth[color_id]" placeholder="色を入力"/>
-                <a href="/clothes">＞</a> 
+                <select name="cloth[color_id]">
+                    @foreach($colors as $color)
+                    <option value="{{$color->id}}">{{$color->color}}</option>
+                    @endforeach
+                </select>
                 <!-- URL変える -->
             </div>
             <div class="memo">
                 <h2>メモ</h2>
                 <textarea name="cloth[comment]" placeholder="メモしたいことを書き込んでください"></textarea><br><br>
             </div>
+            <div class="favorite">
+                <h2>お気に入り</h2>
+                <input type="radio" name="cloth[favorite]" value="1" checked />お気に入りする
+                <input type="radio" name="cloth[favorite]" value="0" />お気に入りにしない
+            </div>
             <input type="submit" value="保存"/><br><br>
         </form>
         <div class="footer">
-            <a href="/clothes">戻る</a>
+            <a href="/dashboard">戻る</a>
         </div>
     </body>
 </html>

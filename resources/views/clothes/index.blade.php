@@ -13,13 +13,16 @@
             @foreach ($clothes as $cloth)
                 <div class='cloth'>
                     <h2 class='title'>
-                        <a href="/clothes/{{ $cloth->id }}">{{ $cloth->category_id }}</a>
+                        <a href="/clothes/{{ $cloth->id }}">{{ $cloth->category->cloth_name }}</a>
                     </h2>
                 </div>
             @endforeach
         </div>
         <div class='paginate'>
             {{ $clothes->links() }}
+        </div>
+        <div class="footer">
+            <a href="/dashboard">戻る</a>
         </div>
     </body>
 </html>
