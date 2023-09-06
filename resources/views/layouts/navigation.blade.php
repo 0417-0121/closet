@@ -16,6 +16,9 @@
                         {{ __('TOP') }}
                     </x-nav-link>
                     <x-nav-link :href="route('index')" :active="request()->routeIs('index')">
+                        {{ __('保存した服一覧') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('index')" :active="request()->routeIs('index')">
                         {{ __('保存したコーデ一覧') }}
                     </x-nav-link>
                 </div>

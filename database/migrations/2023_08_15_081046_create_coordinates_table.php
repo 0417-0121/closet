@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('wear_cloth', 50);
             $table->timestamps();
             $table->softDeletes();
+            $table->string('img_url');
             
         });
     }
