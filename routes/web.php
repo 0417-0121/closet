@@ -39,12 +39,16 @@ Route::controller(CoordinateController::class)->middleware(['auth'])->group(func
     Route::put('/coordinates/{coordinate}', [CoordinateController::class, 'update']);
     Route::delete('/coordinates/{coordinate}', [CoordinateController::class,'delete']);
     });
-Route::get('/clothes', [ClothController::class, 'index'])->name('index');
+    
+Route::get('/clothes', [ClothController::class, 'index'])->name('cloth');
 Route::get('/clothes/create', [ClothController::class, 'create']);
-Route::post('/clothes', [ClothController::class, 'store']);
+Route::post('/clothes', [ClothController::class, 'store']); //画像を含めた投稿の保存処理
 Route::get('/clothes/{cloth}', [ClothController::class, 'show']);
 Route::get('/clothes/{cloth}/edit', [ClothController::class, 'edit']);
 Route::put('/clothes/{cloth}', [ClothController::class, 'update']);
+Route::delete('/clothes/{cloth}', [ClothController::class,'delete']);
+
+Route::get('/categories/{category}', [CategoryController::class,'index']);
 
 // Route::get('/categories', [CategoryController::class, 'index']); 
 

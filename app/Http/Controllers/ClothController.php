@@ -8,6 +8,8 @@ use App\Models\Color;
 use App\Models\Temperature;
 use App\Models\Category;
 use Illuminate\Support\Facades\Auth;
+use Cloudinary;
+
 
 class ClothController extends Controller
 {
@@ -27,8 +29,11 @@ class ClothController extends Controller
     }
 
         public function store(Request $request, Cloth $cloth)
-    {
+    {   
+        //cloudinaryへ画像を送信し、画像のURLを$image_urlに代入している
+        $image_url = Cloudinary::upload($request->file('image')->getRealPath())->getSecurePath();
         $input = $request['cloth'];
+        $input = $input + ['image_url' => $image_url];
         // cloth配列にuser_idを追加
         $input['user_id'] = Auth::id();
         $cloth->fill($input)->save();
@@ -36,9 +41,10 @@ class ClothController extends Controller
         return redirect('/clothes/' . $cloth->id);
     }
         
-        public function edit(Cloth $cloth)
+        public function edit($id, Cloth $clothModel, Color $color, Temperature $temperature, Category $category)
     {
-       return view('clothes.edit')->with(['color' => $color, 'temperature' => $temperature, 'category' => $category]);
+        $cloth = $clothModel -> find($id);
+        return view('clothes.edit')->with(['cloth' => $cloth, 'colors' => $color -> get(), 'temperatures' => $temperature -> get(), 'categories' => $category -> get()]);
     }
     
         public function update(Request $request, Cloth $cloth)
@@ -47,6 +53,12 @@ class ClothController extends Controller
         $cloth->fill($input_cloth)->save();
     
         return redirect('/clothes/' . $cloth->id);
+    }
+    
+        public function delete(Cloth $cloth)
+    {
+        $cloth->delete();
+        return redirect('/clothes');
     }
     
         public function __construct()

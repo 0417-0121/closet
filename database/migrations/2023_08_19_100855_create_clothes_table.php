@@ -23,6 +23,7 @@ return new class extends Migration
             $table->timestamps();
             $table->softDeletes();
             $table->boolean('favorite');
+            $table->string('image_url');
         });
     }
 

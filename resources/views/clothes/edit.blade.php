@@ -8,6 +8,7 @@
     </head>
     <body>
         <h1 class="title">服の詳細の編集</h1>
+        <img src="{{ $cloth->image_url }}" alt="画像が読み込めません。"width="300" height="200"/>
     <div class="content">
         <form action="/clothes/{id}/update" method="POST">
             @csrf
@@ -15,11 +16,35 @@
         <div class='clothes'>
                 <div class='cloth_detail'>
                     <h3>カテゴリー</h3>
-　　　　　　　　　   <option value="{{$category->id}}" @if($category->id == $cloth->cloth_name) selected @endif>{{$category->cloth_name}}</option>
+                    <select name="cloth[category_id]">
+                        @foreach($categories as $category)
+                        @if($category->id==$cloth->category_id)
+                        <option value="{{$category->id}}" selected>{{$category->cloth_name}}</option>
+                        @else
+                        <option value="{{$category->id}}">{{$category->cloth_name}}</option>
+                        @endif
+                        @endforeach
+                    </select>
                     <h3>気温</h3>
-                     <option value="{{$temperature->id}}" @if($temperature->id == $cloth->temperature_id) selected @endif>{{$temperature->temperature}}</option>
+                    <select name="cloth[temperture_id]">
+                        @foreach($temperatures as $temperature)
+                        @if($temperature->id==$cloth->temperature_id)
+                        <option value="{{$temperature->id}}" selected>{{$temperature->temperature}}</option>
+                        @else
+                        <option value="{{$temperature->id}}">{{$temperature->ctemperature}}</option>
+                        @endif
+                        @endforeach
+                    </select>
                     <h3>色</h3>
-                    <option value="{{$color->id}}" @if($color->id == $cloth->color_id) selected @endif>{{$color->color}}</option>
+                    <select name="cloth[color_id]">
+                        @foreach($colors as $color)
+                        @if($color->id==$cloth->color_id)
+                        <option value="{{$color->id}}" selected>{{$color->color}}</option>
+                        @else
+                        <option value="{{$color->id}}">{{$color->color}}</option>
+                        @endif
+                        @endforeach
+                    </select>
                     <h3>コメント</h3>
                     <input type="text" name="comment" value="{{ $cloth->comment }}">
                 </div>
