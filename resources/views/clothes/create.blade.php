@@ -8,8 +8,11 @@
     </head>
     <body>
         <h1>服の情報を入力</h1>
-        <form action="/clothes" method="POST">
+        <form action="/clothes" method="POST" enctype="multipart/form-data">
             @csrf
+            <div class="image">
+                <input type="file" name="image">
+            </div>
             <div class="temperture">
                 <h2>気温</h2>
                 <select name="cloth[temperature_id]">

@@ -27,9 +27,9 @@ class CoordinateController extends Controller
     
     public function store(Request $request, Coordinate $coordinate)
     {   
-        $input = $request['coordinate'];
         //cloudinaryへ画像を送信し、画像のURLを$image_urlに代入している
         $img_url = Cloudinary::upload($request->file('image')->getRealPath())->getSecurePath();
+        $input = $request['coordinate'];
         $input += ['img_url' => $img_url];
         // coordinate配列にuser_idを追加
         $input['user_id'] = Auth::id();
