@@ -8,8 +8,6 @@
     </head>
     <body>
         <h1>保存した服一覧</h1>
-        <?php $cloth = $clothes[0]; ?>
-        <a href="/categories/{{ $cloth->category->id }}">{{ $cloth->category->name }}</a>
         <a href='/clothes/create'>服の保存</a>
         <div class='clothes'>
             @foreach ($clothes as $cloth)
@@ -28,4 +26,3 @@
         </div>
     </body>
 </html>
-

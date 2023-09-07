@@ -11,4 +11,9 @@ class CategoryController extends Controller
     {
         return $category->get();//$categoryの中身を戻り値にする。
     }
+    
+        public function index(Category $category)
+    {
+        return view('categories.index')->with(['clothes' => $category->getByCategory()]);
+    }
 }

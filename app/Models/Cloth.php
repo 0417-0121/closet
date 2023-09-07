@@ -4,14 +4,16 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Cloth extends Model
 {
+      use SoftDeletes;
       protected $table = 'clothes';
       
       protected $fillable = [
             'user_id',
+            'image_url',
             'temperature_id',
             'category_id',
             'color_id',
