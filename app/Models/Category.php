@@ -9,13 +9,19 @@ class Category extends Model
 {
     use HasFactory;
     
-        public function clothes()
+    public function clothes()
     {
         return $this->hasMany(Cloth::class);
     }
     
-        public function getByCategory(int $limit_count = 5)
+    public function Coordinates()
     {
-         return $this->posts()->with('category')->orderBy('updated_at', 'DESC')->paginate($limit_count);
+        return $this->hasMany(Coordinate::class);
     }
+    
+    public function getByCategory(int $limit_count = 5)
+    {
+        return $this->posts()->with('category')->orderBy('updated_at', 'DESC')->paginate($limit_count);
+    }
+    
 }

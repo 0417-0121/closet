@@ -36,7 +36,6 @@
                     <option value="{{$color->id}}">{{$color->color}}</option>
                     @endforeach
                 </select>
-                <!-- URL変える -->
             </div>
             <div class="memo">
                 <h2>メモ</h2>

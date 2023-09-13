@@ -9,8 +9,13 @@ class Color extends Model
 {
     use HasFactory;
     
-        public function clothes()   
+    public function clothes()   
     {
-        return $this->hasMany(Post::class);  
+        return $this->hasMany(Cloth::class);  
+    }
+    
+    public function posts()
+    {
+        return $this->hasMany(Coordinate::class);
     }
 }

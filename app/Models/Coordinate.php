@@ -26,4 +26,20 @@ class Coordinate extends Model
     {
         return $this->belongsToMany(Cloth::class);
     }
+    
+    public function temperature()
+    {
+        return $this->belongsTo(Temperature::class);
+    }
+
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
+    }
+    
+    public function color()
+    {
+        return $this->belongsTo(Color::class);
+    }
+
 }
