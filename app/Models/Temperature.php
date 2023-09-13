@@ -13,4 +13,9 @@ class Temperature extends Model
     {
         return $this->hasMany(Cloth::class);
     }
+    
+    public function Coordinates()
+    {
+        return $this->hasMany(Coordinate::class);
+    }
 }

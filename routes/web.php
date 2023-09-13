@@ -49,9 +49,3 @@ Route::controller(CoordinateController::class)->middleware(['auth'])->group(func
     Route::delete('/clothes/{cloth}', [ClothController::class,'delete']);
     
     Route::get('/categories/{category}', [CategoryController::class,'index']);
-
-// Route::get('/categories', [CategoryController::class, 'index']); 
-
-// Route::get('/colors', [ColorController::class, 'index']);
-
-// Route::get('/temps', [TempController::class, 'index']); 
