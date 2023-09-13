@@ -13,12 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('shows', function (Blueprint $table) {
+        Schema::create('cloth_coordinate', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained();
-            $table->foreignId('coordinate_id')->constrained();
-            $table->boolean('favorite');
-           
+            $table->foreignId("cloth_id")->constrained("clothes");
+            $table->foreignId("coordinate_id")->constrained();
+            $table->timestamps();
         });
     }
 
@@ -29,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('shows');
+        Schema::dropIfExists('cloth_coordinate');
     }
 };

@@ -21,7 +21,11 @@
             </div>
         </div>
         <div>
-                <img src="{{ $coordinate->image_url }}" alt="画像が読み込めません。"/>
+            @foreach($categories as $category)
+                @foreach($coordinate->clothes()->where('category_id', $category->id)->get() as $cloth) 
+                    <img src="{{ $cloth->image_url }}" alt="画像が読み込めません。" width="250" height="250"/><br>
+                @endforeach
+            @endforeach
         </div>
          <form action="/coordinates/{{ $coordinate->id }}" id="form_{{ $coordinate->id }}" method="post">
                     @csrf

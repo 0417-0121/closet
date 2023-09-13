@@ -48,10 +48,10 @@ class ClothController extends Controller
     }
     
         public function update(Request $request, Cloth $cloth)
-    {
+    {   
         $input_cloth = $request['cloth'];
         $cloth->fill($input_cloth)->save();
-    
+        
         return redirect('/clothes/' . $cloth->id);
     }
     
