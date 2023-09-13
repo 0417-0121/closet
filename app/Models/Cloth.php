@@ -32,12 +32,12 @@ class Cloth extends Model
         return $this->belongsTo(Temperature::class);
     }
 
-         public function category()
+    public function category()
     {
         return $this->belongsTo(Category::class);
     }
     
-         public function color()
+    public function color()
     {
         return $this->belongsTo(Color::class);
     }
