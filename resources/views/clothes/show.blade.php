@@ -11,7 +11,7 @@
             {{ $cloth->category->cloth_name }}
         </h1>
                 <div>
-                    <img src="{{ $cloth->image_url }}" alt="画像が読み込めません。"width="300" height="200"/>
+                    <img src="{{ $cloth->image_url }}" alt="画像が読み込めません。"width="300" height="300"/>
                 </div>
         <div class='clothes'>
                 <div class='cloth_detail'>

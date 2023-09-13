@@ -7,15 +7,23 @@
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
     </head>
         <h1>着たい服を写真から選んでください</h1>
-        <form action="/coordinates" method="POST" enctype="multipart/form-data">
+        @foreach($clothes as $cloth)
+        <figure>
+            <img src="{{ $cloth->image_url }}" alt="画像が読み込めません。" width="250" height="250"/>
+            <figcaption>{{$cloth->id}}</figcaption>
+        </figure>   
+        @endforeach
+        <form action="/coordinates" method="POST">
             @csrf
             <div class="wear_cloth">
                 <h2>Name</h2>
                 <input type="text" name="coordinate[wear_cloth]" placeholder="コーディネート名"/>
             </div>
-            <div class="image">
-                <input type="file" name="image"><br><br>
-            </div>
+             <select name="coordinate_image[]" multiple> 
+                @foreach($clothes as $cloth)
+                    <option value="{{ $cloth->id }}">{{ $cloth->id }}</option>
+                @endforeach
+            </select>
             <input type="submit" value="保存"/>
         </form>
         <div class="footer">
