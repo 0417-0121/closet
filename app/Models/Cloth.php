@@ -21,13 +21,13 @@ class Cloth extends Model
             'favorite'
         ];
       
-        public function getPaginateByLimit(int $limit_count = 10)
+    public function getPaginateByLimit(int $limit_count = 10)
     {
             // updated_atで降順に並べたあと、limitで件数制限をかける
         return $this::with('temperature','category', 'color')->orderBy('updated_at', 'DESC')->paginate($limit_count);
     }
     
-         public function temperature()
+    public function temperature()
     {
         return $this->belongsTo(Temperature::class);
     }
@@ -40,5 +40,11 @@ class Cloth extends Model
          public function color()
     {
         return $this->belongsTo(Color::class);
+    }
+    
+    public function coordinates()
+    {
+        return $this->belongsToMany(Coordinate::class);    
+        
     }
 }

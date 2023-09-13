@@ -10,7 +10,7 @@
         <h1 class="title">服の詳細の編集</h1>
         <img src="{{ $cloth->image_url }}" alt="画像が読み込めません。"width="300" height="200"/>
     <div class="content">
-        <form action="/clothes/{id}/update" method="POST">
+        <form action="/clothes/{{$cloth->id}}/update" method="POST">
             @csrf
             @method('PUT')
         <div class='clothes'>

@@ -7,6 +7,9 @@ use App\Models\Coordinate;
 use App\Http\Requests\CoordinateRequest;
 use Auth;
 use Cloudinary;
+use App\Models\Cloth;
+use App\Models\Coordinates_image;
+use App\Models\Category;
 
 class CoordinateController extends Controller
 {
@@ -15,25 +18,26 @@ class CoordinateController extends Controller
         return view('coordinates.index')->with(['coordinates' => $coordinate->getPaginateByLimit()]);//$coordinateの中身を戻り値にする。
     }  //blade内で使う変数'coordinates'と設定。'coordinates'の中身にgetを使い、インスタンス化した$coordinateを代入。
 
-        public function show(Coordinate $coordinate)
+        public function show(Coordinate $coordinate, Category $category)
     {
-        return view('coordinates.show')->with(['coordinate' => $coordinate]);
+        return view('coordinates.show')->with(['coordinate' => $coordinate, 'categories' => $category->get()]);
     }
     
-        public function create()
+        public function create(Cloth $cloth)
     {
-        return view('coordinates.create');
+        return view('coordinates.create')->with(['clothes' => $cloth->get()]);
     }
     
-    public function store(Request $request, Coordinate $coordinate)
+    public function store(Request $request, Coordinate $coordinate, Coordinates_image $coordinates_image)
     {   
-        //cloudinaryへ画像を送信し、画像のURLを$image_urlに代入している
-        $img_url = Cloudinary::upload($request->file('image')->getRealPath())->getSecurePath();
         $input = $request['coordinate'];
-        $input += ['img_url' => $img_url];
+        // dd($request['coordinate_image']);
+        // $coordinate_array = json_decode($request['coordinate_image'],true);
+        $cloth_array = $request->input('coordinate_image');
         // coordinate配列にuser_idを追加
         $input['user_id'] = Auth::id();
         $coordinate->fill($input)->save();
+        $coordinate->clothes()->attach($cloth_array);
         
         return redirect('/coordinates/' . $coordinate->id);
     }
